@@ -2,7 +2,7 @@
   <head>
     <title>Welcome to my Agunigbo</title>
   </head>
-  <body bgcolor="#7FFF11">
+  <body bgcolor="#FCE7E2">
     <h1>Hello hope the journey is coming along fine?</h1>
     <!--Form declaration. Must have an action attribute -->
         <form action="C:/JonnyJava/FirstJava.html/profile.html" method="post">
