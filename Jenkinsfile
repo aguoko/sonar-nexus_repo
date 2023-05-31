@@ -16,7 +16,7 @@ pipeline {
             }
         stage('Code Qualty Scan') {
            steps {
-                  withSonarQubeEnv('sonar_server') {
+                  withSonarQubeEnv('sonar_server') #name you use in integrating jenkins with sonarqube {
              sh "mvn -f SampleWebApp/pom.xml sonar:sonar"      
                }
             }
@@ -31,14 +31,14 @@ pipeline {
 
         stage('push to nexus') {
             steps {
-                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp.war', type: 'war']], credentialsId: 'nexus_credentials', groupId: 'SampleWebApp', nexusUrl: '35.178.73.214:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-snapshots', version: '1.0-SNAPSHOT'
+                nexusArtifactUploader artifacts: [[artifactId: 'SampleWebApp', classifier: '', file: 'SampleWebApp/target/SampleWebApp.war', type: '.war']], credentialsId: 'nexus_credentials', groupId: 'SampleWebApp', nexusUrl: '3.8.211.102:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'maven-shots', version: '1.0 SNAPSHOT'
             }   
             
         }
         
         stage('deploy to tomcat') {
           steps {
-            deploy adapters: [tomcat9(credentialsId: 'tomcat_credentials', path: '', url: 'http://18.133.244.227:8080')], contextPath: 'webapp', war: '**/*.war'
+            deploy adapters: [tomcat9(credentialsId: 'tomcat_credentials', path: '', url: 'http://35.178.235.39:8080')], contextPath: 'webapp', war: '**/*.war'
              
             }
             
