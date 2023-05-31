@@ -16,7 +16,7 @@ pipeline {
             }
         stage('Code Qualty Scan') {
            steps {
-                  withSonarQubeEnv('sonar_server') #name you use in integrating jenkins with sonarqube {
+                  withSonarQubeEnv('sonar_server') {
              sh "mvn -f SampleWebApp/pom.xml sonar:sonar"      
                }
             }
